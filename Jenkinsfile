@@ -11,6 +11,13 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                echo 'linting'
+                echo 'completed 100%'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Pushing Image'
