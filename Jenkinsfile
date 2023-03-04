@@ -11,5 +11,15 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Pushing Image'
+                sh '''
+                image_tag=$(git rev-parse HEAD)
+                docker tag webapp:${image_tag} localhost:5000/webapp:${image_tag}
+                docker push localhost:5000/webapp:${image_tag}
+                '''
+            }
+        }
     }
 }
